@@ -33,7 +33,7 @@ async function exchangeCodeForToken(code) {
         'include_granted_scopes': 'true',
         'state': 'pass-through value'
     };
-const tokenResponse = await superagent.post(tokenServerUrl).send(params);
+const tokenResponse = await superagent.get(tokenServerUrl).query(params);
 // const accessToken = tokenResponse.body.
 
 console.log('token Resposne', tokenResponse)
