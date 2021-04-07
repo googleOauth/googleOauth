@@ -1,7 +1,7 @@
 'use strict'
 
 var YOUR_CLIENT_ID = "967817971714-qeu311a41ou2mv7q88j69613eeklg24g.apps.googleusercontent.com";
-var YOUR_REDIRECT_URI = "http://localhost:3000/oauth";
+var YOUR_REDIRECT_URI = "https://ltuc-google-oauth.herokuapp.com/oauth";
 
 var params = {};
 
