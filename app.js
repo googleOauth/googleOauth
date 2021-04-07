@@ -46,7 +46,7 @@ app.get('/delete', bearerAuth, acl('delete'), (req, res) => {
   res.send('OK IT WORKS I can delete');
 });
 
-app.get('/g_oath', oauth, (req, res) => {
+app.get('/g_oauth', (req, res) => {
   res.json({ token: req.token });
 });
 mongoose

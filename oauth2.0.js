@@ -22,7 +22,7 @@ module.exports = async function (req, res, next) {
     console.log('2. ACCESS TOKEN', remoteToken);
 
 }
-
+// REDIRECT_URI= encodeURIComponent(REDIRECT_URI)
 // Functions
 async function exchangeCodeForToken(code) {
     let params = {
@@ -33,7 +33,15 @@ async function exchangeCodeForToken(code) {
         'include_granted_scopes': 'true',
         'state': 'pass-through value'
     };
-const tokenResponse = await superagent.get(tokenServerUrl).query(params);
+// const tokenResponse = await superagent.get(tokenServerUrl).query(params);
+const tokenResponse = await superagent.get(`https://accounts.google.com/o/oauth2/v2/auth?
+    scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&
+    include_granted_scopes=true&
+    response_type=token&
+    state=state_parameter_passthrough_value&
+    redirect_uri=${REDIRECT_URI}&
+    client_id=${clientId}`);
+
 // const accessToken = tokenResponse.body.
 
 console.log('token Resposne', tokenResponse)
