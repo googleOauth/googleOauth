@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+require("dotenv").config();
 
 console.log('I am here')
 
@@ -15,8 +16,12 @@ app.get('/oauth',  (req, res) => {
   res.send("You are signed");
 });
 
+app.get("/", (req, res) => {
+  res.render("index.html");
+})
+
 mongoose
-  .connect('mongodb://localhost:27017/auth', {
+  .connect(process.env.MONGODB_URI,{
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
